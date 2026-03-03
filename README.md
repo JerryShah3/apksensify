@@ -116,7 +116,7 @@ Documentation
 
 ```
 python3 apksensify.py sample.apk --sarif
-```
+
 Generates SARIF output:
 
 report.sarif
@@ -128,6 +128,7 @@ GitHub Code Scanning
 DevSecOps workflows
 
 CI integration
+```
 
 ⚡ --no-cache
 python3 apksensify.py sample.apk --no-cache
