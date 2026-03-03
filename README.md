@@ -57,20 +57,33 @@ It performs static analysis by decompiling APKs using `apktool` and scanning sou
 git clone https://github.com/JerryShah3/apksensify.git
 cd apksensify
 pip install -r requirements.txt
+```
 
 🛠 Install apktool (Linux)
-sudo apt install apktool openjdk-17-jre unzip
-🧪 CLI Usage
-python3 apksensify.py [options] <apk>
-📘 CLI Manual (Flags Explained)
-📌 Basic Scan
-python3 apksensify.py sample.apk
 
+```
+sudo apt install apktool openjdk-17-jre unzip
+```
+
+🧪 CLI Usage
+
+```
+python3 apksensify.py [options] <apk>
+```
+📘 CLI Manual (Flags Explained)
+
+📌 Basic Scan
+
+```
+python3 apksensify.py sample.apk
+```
 Runs a static scan on the APK and prints findings in formatted CLI output.
 
 🔎 --json
-python3 apksensify.py sample.apk --json
 
+```
+python3 apksensify.py sample.apk --json
+```
 Outputs results in raw JSON format.
 
 Useful for:
@@ -82,7 +95,10 @@ CI/CD pipelines
 Script integration
 
 📄 --html
+
+```
 python3 apksensify.py sample.apk --html
+```
 
 Generates an HTML report:
 
@@ -97,8 +113,10 @@ Client reports
 Documentation
 
 🛡 --sarif
-python3 apksensify.py sample.apk --sarif
 
+```
+python3 apksensify.py sample.apk --sarif
+```
 Generates SARIF output:
 
 report.sarif
