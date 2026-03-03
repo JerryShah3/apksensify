@@ -62,7 +62,9 @@ def print_summary_table(summary):
 # HTML Report
 # -------------------------------------------------
 def generate_html_report(findings, summary):
-    env = Environment(loader=FileSystemLoader("templates"))
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    template_dir = os.path.join(base_dir, "templates")
+    env = Environment(loader=FileSystemLoader(template_dir))
     template = env.get_template("report.html")
     html = template.render(findings=findings, summary=summary)
 
