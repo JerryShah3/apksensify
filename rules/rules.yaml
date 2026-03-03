@@ -1,0 +1,950 @@
+Google_API:
+  regex: "AIza[0-9A-Za-z-_]{35}"
+  severity: Low
+  description: Google API Key
+
+Google_Oauth:
+ regex: "ya29\\.[0-9A-Za-z\\-_]+"
+ severity: High
+ description: OAuth Access Token
+
+AWS_Access_Key:
+ regex: "AKIA[0-9A-Z]{16}"
+ severity: Critical
+ description: AWS Access Key ID
+
+Amazon_AWS_Access_Key_ID:
+  regex: "AKIA\\w{12,}"
+  severity: Critical
+  description: Amazon AWS Access Key ID (Generic)
+
+Amazon_AWS_API_Key_1:
+  regex: "AKIA[0-9A-Z]{16}(?<![0-9A-Z])"
+  severity: Critical
+  description: Amazon AWS API Key (AKIA Prefix)
+
+Amazon_AWS_API_Key_2:
+  regex: "A3T[0-9A-Z]{16}(?<![0-9A-Z])"
+  severity: Critical
+  description: Amazon AWS API Key (A3T Prefix)
+
+Amazon_AWS_API_Key_3:
+  regex: "AGPA[0-9A-Z]{16}(?<![0-9A-Z])"
+  severity: Critical
+  description: Amazon AWS API Key (AGPA Prefix)
+
+Amazon_AWS_API_Key_4:
+  regex: "AIDA[0-9A-Z]{16}(?<![0-9A-Z])"
+  severity: Critical
+  description: Amazon AWS API Key (AIDA Prefix)
+
+Amazon_AWS_API_Key_5:
+  regex: "AROA[0-9A-Z]{16}(?<![0-9A-Z])"
+  severity: Critical
+  description: Amazon AWS API Key (AROA Prefix)
+
+Amazon_AWS_API_Key_6:
+  regex: "AIPA[0-9A-Z]{16}(?<![0-9A-Z])"
+  severity: Critical
+  description: Amazon AWS API Key (AIPA Prefix)
+
+Amazon_AWS_API_Key_7:
+  regex: "ANPA[0-9A-Z]{16}(?<![0-9A-Z])"
+  severity: Critical
+  description: Amazon AWS API Key (ANPA Prefix)
+
+Amazon_AWS_API_Key_8:
+  regex: "ANVA[0-9A-Z]{16}(?<![0-9A-Z])"
+  severity: Critical
+  description: Amazon AWS API Key (ANVA Prefix)
+
+Amazon_AWS_API_Key_9:
+  regex: "ASIA[0-9A-Z]{16}(?<![0-9A-Z])"
+  severity: Critical
+  description: Amazon AWS Temporary Access Key (ASIA Prefix)
+
+Amazon_MWS_Auth_Token:
+  regex: "amzn\\.mws\\.[0-9a-f-]+"
+  severity: High
+  description: Amazon MWS Auth Token
+
+Amazon_AWS_URL:
+  regex: "s3\\.amazonaws.com[/]+|[a-zA-Z0-9_-]*\\.s3\\.amazonaws.com"
+  severity: Medium
+  description: Amazon AWS S3 URL
+
+Amazon_AWS_URL2:
+  regex: "(https?://|s3[a-zA-Z0-9-]*)\\.?(s3\\.amazonaws\\.com|amazonaws\\.com)/(.*?)(?=[\"'\\s])"
+  severity: Medium
+  description: Amazon AWS URL Pattern
+
+Mailgun_API_Key:
+  regex: "(key|pubkey)-[0-9a-zA-Z]{32}"
+  severity: High
+  description: Mailgun API Key
+
+Authorization_Bearer:
+  regex: "(?i)\\bbearer\\s+eyJ[A-Za-z0-9_-]{10,}\\.[A-Za-z0-9_-]{10,}\\.[A-Za-z0-9_-]{10,}"
+  severity: High
+  description: Authorization Bearer Token
+
+Authorization_API:
+  regex: "api[-\\s]*key[-\\s]*[a-zA-Z0-9_-]{0,95}[a-zA-Z0-9]"
+  severity: High
+  description: Generic API Key Authorization
+
+Algolia_API_Key:
+  regex: "(?i)(?<!\\w-)(?:algolia|algolia-application-id|algolia-api-key|algolia api key|algoliaapikey|algoliakey)(?!\\w-)[:\"]"
+  severity: High
+  description: Algolia API Key Reference
+
+RSA_Private_Key:
+  regex: "-----BEGIN RSA PRIVATE KEY-----(.*?)-----END RSA PRIVATE KEY-----"
+  severity: Critical
+  description: RSA Private Key
+
+SSH_DSA_Private_Key:
+  regex: "-----BEGIN DSA PRIVATE KEY-----(.*?)-----END DSA PRIVATE KEY-----"
+  severity: Critical
+  description: SSH DSA Private Key
+
+SSH_DC_Private_Key:
+  regex: "-----BEGIN EC PRIVATE KEY-----(.*?)-----END EC PRIVATE KEY-----"
+  severity: Critical
+  description: SSH EC Private Key
+
+PGP_Private_Block:
+  regex: "-----BEGIN PGP PRIVATE KEY BLOCK-----(.*?)-----END PGP PRIVATE KEY BLOCK-----"
+  severity: Critical
+  description: PGP Private Key Block
+
+Facebook_Access_Token:
+  regex: "(?i)facebook[._ -]?access[._ -]?token"
+  severity: Medium
+  description: Facebook Access Token Reference
+
+Amazon_AWS_S3_Bucket:
+  regex: "(https?://s3(-[a-z0-9-]+)?\\.amazonaws\\.com/|https?://s3\\.([a-z0-9-]+\\.)?amazonaws\\.com/|amzn\\.mws\\.[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"
+  severity: High
+  description: Amazon AWS S3 Bucket or MWS Identifier
+
+Github_Fine-Grained_Personal_Access_Token:
+  regex: "github_pat_[a-zA-Z0-9_-]{20}"
+  severity: Critical
+  description: GitHub Fine-Grained Personal Access Token
+
+Github_Personal_Access_Token:
+  regex: "\\bghp_[A-Za-z0-9]{36,40}\\b"
+  severity: Critical
+  description: GitHub Personal Access Token
+
+Bugsnag_Monitoring_API_Key:
+  regex: "(?i)(?<!\\w)bugsnag[.]?start(?!\\w)"
+  severity: Medium
+  description: Bugsnag Monitoring API Key Reference
+
+Bugsnag_API_Key:
+  regex: "(?i)bugsnag(?:API(?:Key)?|_API(?:_Key)?)?|bugsnag_key"
+  severity: High
+  description: Bugsnag API Key
+
+Pagerduty_API_Key:
+  regex: "(?i)PagerDuty[._ -]?API[._ -]?key"
+  severity: High
+  description: PagerDuty API Key
+
+Pagerduty_API_Token:
+  regex: "(?i)PagerDuty[._ -]?API[._ -]?token"
+  severity: High
+  description: PagerDuty API Token
+
+Artifactory_API_Token:
+  regex: "(?i)artifactory(?:API(?:Key)?|_API(?:_Key)?)?|artifactory_key|artifactory_token|artifactoryToken"
+  severity: High
+  description: Artifactory API Token
+
+Artifactory_Password:
+  regex: "(?i)\\b(AP[A-F0-9][A-Za-z0-9]{8,}|artifactory[_:]?password)\\b"
+  severity: Critical
+  description: Artifactory Password
+
+Cloudinary_Basic_Auth:
+  regex: "(?i)(?:cloudinary://|cloudinaryBasicAuth|cloudinary_Auth|cloudinaryAuth|cloudinary_Basic_Auth|cloudinary Auth|cloudinary Basic Auth|cloudinary Token|cloudinary_token|cloudinary API Key|cloudinaryAPI|cloudinary_API|cloudinary_API_Key|cloudinaryKey|cloudinary_Key)"
+  severity: High
+  description: Cloudinary Credentials Reference
+
+Braintree:
+  regex: "(?i)(?:braintree\\.BraintreeGateway|braintree\\.Environment|braintree_merchantId|braintree_privateKey|braintreeMerchantID)"
+  severity: High
+  description: Braintree Credential Reference
+
+PayPal_Braintree_Access_Token:
+  regex: "(?i)(?:PAYPAL[_\\s]?BRAINTREE[_\\s]?ACCESS[_\\s]?TOKEN|access_token\\$production\\$|PAYPALBRAINTREEACCESSTOKEN|PAYPAL[_\\s]?BRAINTREE[_\\s]?TOKEN|PAYPALBRAINTREETOKEN)"
+  severity: Critical
+  description: PayPal Braintree Access Token
+
+JSON_Web_Token-JWT:
+  regex: "ey[A-Za-z0-9_-]*\\.ey[A-Za-z0-9_-]*\\.[A-Za-z0-9_-]*"
+  severity: High
+  description: JSON Web Token (JWT)
+
+Discord_BOT_Token:
+  regex: "(?i)(?:Discord[_ ]BOT[_ ]Token|DiscordBOTToken|Discord[_ ]BOT|DiscordBOT)"
+  severity: High
+  description: Discord Bot Token Reference
+
+Facebook_ClientID:
+  regex: "(?i)Facebook(?:_|-)?Client(?:_|-)?ID"
+  severity: Medium
+  description: Facebook Client ID Reference
+
+Facebook_OAuth:
+  regex: "(?i)facebook_oauth.*([a-f0-9]{15})"
+  severity: High
+  description: Facebook OAuth Token
+
+Facebook_App_Secret:
+  regex: "(?i)(Facebook[._ -]?App[._ -]?Secret|FB[._ -]?CLIENT[._ -]?SECRET)"
+  severity: Critical
+  description: Facebook App Secret
+
+Facebook_App_ID:
+  regex: "(?i)facebook[._ -]?app[._ -]?id|facebook[ _]app[ _]id"
+  severity: Medium
+  description: Facebook App ID
+
+Facebook_Client_Token:
+  regex: "(?i)facebook[._ -]?client[._ -]?token|facebook[ _]client[ _]token"
+  severity: High
+  description: Facebook Client Token
+
+Facebook_Graph_API_URL:
+  regex: "(?i)(graph.facebook.com)"
+  severity: Low
+  description: Facebook Graph API URL
+
+Firebase_URL_1:
+  regex: "(?i)\\b[a-z0-9-]+\\.(?:firebaseapp\\.com|firebaseio\\.com)(?:/[^\\s\"']*)?"
+  severity: Medium
+  description: Firebase URL
+
+Firebase_URL_2:
+  regex: "(?i)https?://firebasestorage\\.googleapis\\.com"
+  severity: Medium
+  description: Firebase Storage URL
+
+Firebase_Cloud_Messaging:
+  regex: "(?i)(Firebase[._-]?Cloud[._-]?Messaging|firebase[._-]?cloud[._-]?messaging[._-]?server[._-]?key|FCM[._-]?API[._-]?KEY)"
+  severity: High
+  description: Firebase Cloud Messaging Key Reference
+
+Google_Cloud_Platform_OAuth:
+  regex: "(?i)(GOOGLE[_\\s]?CLOUD[_\\s]?PLATFORM[_\\s]?OAUTH|GOOGLECLOUDPLATFORMOAUTH|GOOGLECLOUDOAUTH|GOOGLE[_\\s]?CLOUD[_\\s]?OAUTH|CLOUD[_\\s]?PLATFORM[_\\s]?OAUTH|CLOUD[_\\s]?PLATFORM[_\\s]?OAUTH[_\\s]?GOOGLE|CLOUDPLATFORMOAUTHGOOGLE)"
+  severity: High
+  description: Google Cloud Platform OAuth Reference
+
+Google_Cloud_Platform_Service_Account_1:
+  regex: "(?i)(?:Google_Cloud_Platform_Service_Account|Google Cloud Platform Service Account|GoogleCloudPlatformServiceAccount|Google_Cloud_Platform_Service|GoogleCloudPlatformService|Google Cloud Platform Service|Cloud_Platform_Service_Account|Cloud Platform Service Account|Cloud_Platform_Service_Account_Google|Cloud Platform Service Account Google|CloudPlatformServiceAccountGoogle|Google_Platform_Service_Account|Google Platform Service Account|GooglePlatformServiceAccount)"
+  severity: Critical
+  description: Google Cloud Platform Service Account Reference
+
+Google_Cloud_Service_URL:
+  regex: "(?i)\\bhttps?://cloud\\.google\\.com(?:/[^\\s\"']*)?"
+  severity: High
+  description: Google Cloud Service URL
+
+Google_OAuth_Access_Token:
+  regex: "ya29\\.[0-9A-Za-z\\-_]{20}"
+  severity: High
+  description: Google OAuth Access Token
+
+Heroku_API_Key_1:
+  regex: "(?i)heroku[0-9A-Za-z\\-_]+-"
+  severity: High
+  description: Heroku API Key Pattern
+
+Heroku_API_Key_2:
+  regex: "(?i)heroku(?:API(?:Key)?|_API(?:_Key)?)?|heroku_key|heroku-api-key"
+  severity: High
+  description: Heroku API Key Reference
+
+MailChimp_API_Key:
+  regex: "(?i)mailchimp(?:API(?:Key)?|_API(?:_Key)?)?|mailchimp_key"
+  severity: High
+  description: MailChimp API Key Reference
+
+Slack_Token:
+  regex: "(?<![a-z0-9])(xox[pboaqrs]-[0-9]{12}-[0-9]{12}-[0-9]{12}-[a-z0-9]{32})(?![a-z0-9])"
+  severity: Critical
+  description: Slack Token
+
+Slack_Webhook:
+  regex: "https://hooks\\.slack\\.com/services/T[a-zA-Z0-9_]{8}/B[a-zA-Z0-9_]{8}/[a-zA-Z0-9_]{24}"
+  severity: Critical
+  description: Slack Webhook URL
+
+FreshDesk_API_Key:
+  regex: "(?i)Fresh[._-]?Desk[._-]?A[._-]?P[._-]?I[._-]?K[._-]?e[._-]?y|Fresh[._-]?Desk[._-]?API[._-]?Key|FreshDesk api key"
+  severity: High
+  description: FreshDesk API Key Reference
+
+Square_Production_APP_ID:
+  regex: "(?i)sq0atp-[0-9a-z\\-_]{10}"
+  severity: Critical
+  description: Square Production App ID
+
+Square_OAuth_Secret:
+  regex: "(?i)sq0csp-[0-9a-z\\-_]{15}"
+  severity: Critical
+  description: Square OAuth Secret
+
+Stripe_API_Key:
+  regex: "sk_live_[0-9a-zA-Z]{15}"
+  severity: Critical
+  description: Stripe Live Secret Key
+
+Stripe_Restricted_API_Key:
+  regex: "rk_live_[0-9a-zA-Z]{15}"
+  severity: Critical
+  description: Stripe Restricted Live Key
+
+Twilio_API_Key:
+  regex: "(?i)Twilio[._ -]?API[._ -]?Key|Twilio[._ -]?Key"
+  severity: High
+  description: Twilio API Key Reference
+
+Twilio_Account_SID:
+  regex: "(?i)(TWILIO_ACCOUNT_SID|TWILIOACCOUNTSID|TWILIO_SID|TWILIOSID|TWILIO_ACCOUNT|TWILIOACCOUNT)"
+  severity: High
+  description: Twilio Account SID Reference
+
+Twilio_APP_SID:
+  regex: "(?i)TWILIO[_\\s]*(APP(lication)?|)[_\\s]*SID"
+  severity: High
+  description: Twilio App SID Reference
+
+Twitter_Access_Token:
+  regex: "(?i)\\bTwitter(_|\\.)?Access(_|\\.)?Token\\b"
+  severity: High
+  description: Twitter Access Token Reference
+
+Twitter_ClientID:
+  regex: "(?i)Twitter[_ .]Client(?:_?ID)?\\b"
+  severity: Medium
+  description: Twitter Client ID Reference
+
+Twitter_Oauth:
+  regex: "(?i)Twitter([ _.]?)Oauth"
+  severity: Medium
+  description: Twitter OAuth Reference
+
+Twitter_Secret_Key:
+  regex: "(?i)Twitter[_ .]?Secret[_ .]?Key"
+  severity: Critical
+  description: Twitter Secret Key Reference
+
+HubSpot_Private_Apps_Access_Token:
+  regex: "(?i)pat-na1-[._-]?.*"
+  severity: Critical
+  description: HubSpot Private App Access Token
+
+HubSpot_API_Key:
+  regex: "(?i)api[._-]?hubspot[._-]?com|hubspot[._-]?api[._-]?key|Hubspot API Key"
+  severity: High
+  description: HubSpot API Key Reference
+
+Infura_API_Key:
+  regex: "(?i)(Infura[._-]?API[._-]?key|Infura[._-]?key|mainnet[._-]?infura[._-]?io|Infura Key|Infura API Key)"
+  severity: High
+  description: Infura API Key Reference
+
+Sift_Key:
+  regex: "(?i)\\b(siftKey|sift_Key|siftApiKey|sift_API_Key|sift\\sAPI\\sKey|sift\\sKey|sift\\.Key|siftAPI\\.Key|sift_API\\.Key)\\b"
+  severity: High
+  description: Sift API Key Reference
+
+Sentry_DSN:
+  regex: "(https?://\\w+(:\\w+)?@sentry\\.io)"
+  severity: Critical
+  description: Sentry DSN
+
+Intercom_API_Key:
+  regex: "(?i)(intercom\\.initialize|intercom_initialize|intercom\\.initializeAPI(Key)?|intercom_initializeAPI(Key)?|intercom\\.APIKey|intercom_API_Key|intercomAPIkey|intercom_API_Secret|intercomAPISecret)"
+  severity: High
+  description: Intercom API Key Reference
+
+Singular_Config_1:
+  regex: "SingularConfig\\(['\"]([\\w.]+)['\"],\\s?['\"]([\\w.]+)['\"]\\)"
+  severity: High
+  description: Singular Config Hardcoded Keys
+
+Singular_Config_2:
+  regex: "(?i)\\bSingular(?:\\s*CONFIG|\\s*Config|_CONFIG)?\\b"
+  severity: Medium
+  description: Singular Config Reference
+
+Bitmovin_API_Key:
+  regex: "(?i)\\bBitmovin[_ .]?API[_ .]?Key\\b"
+  severity: High
+  description: Bitmovin API Key Reference
+
+Salesforce_MarketingCloud_Token:
+  regex: "(?i)Salesforce[_ .]*Marketing[_ .]*Cloud[_ .]*Token"
+  severity: High
+  description: Salesforce Marketing Cloud Token Reference
+
+AppDynamics_Key_1:
+  regex: "AgentConfiguration\\.builder\\(\\)\\s*\\.\\s*withAppKey\\(\\s*['\"]([a-zA-Z0-9]{16})['\"]\\s*\\)"
+  severity: Critical
+  description: AppDynamics App Key
+
+AppDynamics_Key_2:
+  regex: "(?i)\\b(AppDynamics[_\\s]?(Key|API[_\\s]?Key)|AgentConfiguration\\.builder)\\b"
+  severity: High
+  description: AppDynamics Key Reference
+
+Amplitude_API_Key:
+  regex: "(?i)(?:\"|'|`)(?:amplitude_key|amplitudeApiKey|amplitudeApi|AMPLITUDE_API_KEY|jsApiKey)(?:\"|'|`)"
+  severity: High
+  description: Amplitude API Key Reference
+
+Visual_Studio_App_Center_API_Token:
+  regex: "(?i)\\bVisual(?:[._ ]*Studio[._ ]*)?(?:App[._ ]*)?(?:Center[._ ]*)?(?:API[._ ]*)?Token\\b"
+  severity: High
+  description: Visual Studio App Center API Token
+
+Branch_io_Reset_Key:
+  regex: "(?i)key_live_[A-Za-z0-9]+"
+  severity: Critical
+  description: Branch.io Live Key
+
+Branch_io_Reset_Secret:
+  regex: "(?i)secret_live_[A-Za-z0-9]+"
+  severity: Critical
+  description: Branch.io Live Secret
+
+Bing_Maps_API_Key:
+  regex: "(?i)\\bcom\\.microsoft\\.mapsdk\\.maps\\.(?:API_KEY|API_Token|APIKEY|APIToken|API\\.KEY|API\\.Token)\\b"
+  severity: High
+  description: Bing Maps API Key Reference
+
+Bitly_API_URL:
+  regex: "(?i)https://api-ssl\\.bitly\\.com/+|http://api-ssl\\.bitly\\.com/+"
+  severity: Medium
+  description: Bitly API URL
+
+Bitly_Access_Token:
+  regex: "(?i)Bit\\.ly[ _.-]?access[ _.-]?token|Bitly[ _.-]?access[ _.-]?token"
+  severity: High
+  description: Bitly Access Token Reference
+
+BrowserStack_Access_Key_URL:
+  regex: "(?i)(BrowserStack\\s*(?:Access[-._\\s]*Key|Key)|api\\.browserstack\\.com)"
+  severity: High
+  description: BrowserStack Access Key Reference
+
+Buildkite_Access_Token:
+  regex: "(?i)bkua_[a-fA-F0-9]{12}"
+  severity: Critical
+  description: Buildkite Access Token
+
+ButterCMS_API_Key:
+  regex: "(?i)\\b(?:butter_cms_api_key|buttercmsapikey|butter cms api key|butter_cms\\.api_key|buttercms\\.api_key|butter\\.cms_apikey)\\b"
+  severity: High
+  description: ButterCMS API Key Reference
+
+Asana_Access_Token:
+  regex: "(?i)\\bAsana(?:[_\\.]?Access[_\\.]?Token|AccessToken)\\b"
+  severity: High
+  description: Asana Access Token Reference
+
+Zendesk_URL:
+  regex: "https://[a-zA-Z0-9]+\\.zendesk\\.com/api/|http://[a-zA-Z0-9]+\\.zendesk\\.com/api/"
+  severity: Medium
+  description: Zendesk API URL
+
+Zendesk_Access_Token:
+  regex: "(?i)ZendeskConfig\\.INSTANCE\\."
+  severity: High
+  description: Zendesk Access Token Reference
+
+WPEngine_URL:
+  regex: "(?i)https?://api\\.wpengine\\.[a-zA-Z]+"
+  severity: Medium
+  description: WP Engine API URL
+
+Datadog_Client_Token_1:
+  regex: "pub[0-9a-f]{12}"
+  severity: High
+  description: Datadog Client Token
+
+Datadog_Client_Token_2:
+  regex: "(?i)\\b(?:Datadog[_\\.]Client[_\\.]Token|DatadogClientToken|Datadog Client Token)\\b"
+  severity: High
+  description: Datadog Client Token Reference
+
+Datadog_API_URL:
+  regex: "(?i)https?://api\\.datadoghq\\.[a-zA-Z]+"
+  severity: Medium
+  description: Datadog API URL
+
+Datadog_API_Key:
+  regex: "(?i)Datadog[_\\s]*\\.?(initialize)"
+  severity: High
+  description: Datadog API Key Reference
+
+Delighted_API_URL:
+  regex: "(?i)https?://api\\.delighted\\.[a-zA-Z]+"
+  severity: Medium
+  description: Delighted API URL
+
+Delighted_API_Key:
+  regex: "(?i)Delighted[_\\s]*\\.?(initialize)"
+  severity: High
+  description: Delighted API Key Reference
+
+Deviant_Art_Access_Token_URL:
+  regex: "(?i)(Deviant\\s?(-|\\.)?Art\\s?(-|\\.)?Access\\s?(-|\\.)?Token|DeviantArtAccess\\s?Token|Deviant-Art-Access-Token|Deviant_Art_Access_Token|Deviant\\.Art_Access_Token|www\\.deviantart\\.com)"
+  severity: High
+  description: DeviantArt Access Token Reference
+
+Deviant_Art_Secret:
+  regex: "(?i)Deviant[._-]?Art[._-]?Secret"
+  severity: Critical
+  description: DeviantArt Secret Reference
+
+Dropbox_API_Token_URL:
+  regex: "(?i)(Dropbox[._-]?API[._-]?secret|dropbox[._-]?api[._-]?token|api[._-]?dropboxapi[._-]?com|dropbox api token)"
+  severity: High
+  description: Dropbox API Token Reference
+
+TravisCI_API_Token:
+  regex: "(?i)Travis[ ._]?CI([ ._]?Api)?[ ._]?Token"
+  severity: High
+  description: Travis CI API Token Reference
+
+WakaTime_API_Key:
+  regex: "(?i)waka_"
+  severity: Medium
+  description: WakaTime API Key Pattern
+
+Sonarcloud_Token:
+  regex: "(?i)(SonarCloudApiToken|Sonar[_ .]?Cloud[_ .]?ApiToken|Sonar\\.CloudApiToken)"
+  severity: High
+  description: SonarCloud Token Reference
+
+Instagram_Basic_Display_API_URL:
+  regex: "(?i)https://graph\\.instagram\\.com"
+  severity: Medium
+  description: Instagram Basic Display API URL
+
+Instagram_Graph_Access_API_URL:
+  regex: "(?i)https://graph\\.facebook\\.com"
+  severity: Medium
+  description: Instagram Graph Access API URL
+
+Instagram_Graph_API_Token:
+  regex: "(?i)(graphApiToken|InstagramGraphApiToken|graph_Api_Token|Instagram_Graph_Api_Token|graph\\.Api_Token|Instagram\\.Graph_ApiToken|graph Api Token|Instagram Graph Api Token)"
+  severity: High
+  description: Instagram Graph API Token Reference
+
+Instagram_Basic_Display_API_Token:
+  regex: "(?i)(InstagramBasicDisplayApiToken|basicDisplayApiToken|Instagram Basic Display Api Token|basic Display Api Token)"
+  severity: High
+  description: Instagram Basic Display API Token Reference
+
+Gitlab_Runner_Registration_Token:
+  regex: "(?i)(GitLabRunnerRegistrationToken|gitlab-runner register|gitlab_runner_register|gitlab-runner-register|gitlab runner)"
+  severity: Critical
+  description: GitLab Runner Registration Token
+
+Gitlab_Token:
+  regex: "(?i)(GitLabToken|GitLab[_\\. ]Token)"
+  severity: High
+  description: GitLab Token Reference
+
+Paypal_ClientID_Secret_Key_URL:
+  regex: "(?i)https://api(?:-m)?\\.sandbox\\.paypal\\.com"
+  severity: Medium
+  description: PayPal Sandbox API URL
+
+RazorPay_KeyID:
+  regex: "(?i)(rzp_live_|Razorpay[._ ]?ApiKey)"
+  severity: Critical
+  description: RazorPay Live Key or API Key Reference
+
+LumberJack_API_Key:
+  regex: "(?i)(lumberjack(ApiKey|ApiUrl|AppName)|lumberjack[._ ]Api(Key|Url|AppName)|https://lumberjack\\.razorpay\\.com)"
+  severity: High
+  description: LumberJack API Key or Endpoint Reference
+
+CircleCI_Access_Token:
+  regex: "(?i)(CircleCI[_\\.]?(?:getAccessToken|access_token|get_access_token)|https?://circleci\\.com/)"
+  severity: High
+  description: CircleCI Access Token or Endpoint Reference
+
+Loqate_API_Key_URL:
+  regex: "(?i)(Loqate[._ ]?ApiKey|Loqate-Api-Key|https?://api\\.addressy\\.com/)"
+  severity: High
+  description: Loqate API Key or Endpoint Reference
+
+IPStack_Access_Key:
+  regex: "https?://api\\.ipstack\\.com(?!.*(?:IpstackApiKey|IpstackAccessKey))(?=.*)"
+  severity: Medium
+  description: IPStack API Endpoint
+
+NPM_Token:
+  regex: "(?i)(NPM[._ ]?TOKEN(_KEY)?|NpmToken|registry\\.npmjs\\.org)"
+  severity: High
+  description: NPM Token Reference
+
+Calendly_API_Key_URL:
+  regex: "(?i)(CalendlyApiClient(Id|Secret)|CalendlyApi(WebhookSigningKey|Credentials)|webhook[._]?SigningKey|calendly_api_creds_prefs|api\\.calendly\\.com)"
+  severity: High
+  description: Calendly API Key or Credentials Reference
+
+OpsGenie_API_Key:
+  regex: "(?i)(?:BuildConfig\\.)?(?:OPSGENIE_API_KEY|OpsGenie(?: API Key)?|api\\.opsgenie\\.com|GenieKey)\\b"
+  severity: High
+  description: OpsGenie API Key Reference
+
+Azure_Application_Insights_API_Key:
+  regex: "(?i)(AzApplicationInsightsApiKey|Instrumentation key|Azure Application Insights|Azure APP ID|Azure API Key|app_insights_keys_prefs|AppInsightsKeys|api\\.applicationinsights\\.io)"
+  severity: High
+  description: Azure Application Insights Key Reference
+
+Google_Tag_Manager_ID:
+  regex: "GTM-[a-zA-Z0-9]+"
+  severity: Medium
+  description: Google Tag Manager ID
+
+Cypress_Record_Key:
+  regex: "(?i)(RecordKey|Cypress[._ ]?record[._ ]?key|record[._ ]?key|api\\.cypress\\.io)"
+  severity: High
+  description: Cypress Record Key Reference
+
+Youtube_API_Key:
+  regex: "(?i)(YouTube[._ ]?ApiKey|youtube_api_key_prefs|YoutubeAPI|youtube-api-key-prefs)"
+  severity: High
+  description: YouTube API Key Reference
+
+ABTasty_API_Key:
+  regex: "(?i)(ABTastyApiKey|AB-Tasty-Api-Key|AB\\.TastyApiKey|AB_TastyApiKey|ABTasty_ApiKey|ABTasty\\.ApiKey|ABTastyApi\\.Key|ABTastyApi_Key|ABTasty API Key|abtasty_prefs|abtasty-prefs|abtasty\\.prefs|abtastyprefs|abtasty prefs|abtasty_api_key_prefs|abtasty\\.api_key_prefs|abtasty api key prefs|abtasty-api-key-prefs|abtasty_api_key\\.prefs|ABTastyUDC|AB Tasty UDC|AB-Tasty-UDC|AB_Tasty_UDC|AB\\.Tasty_UDC|AB_Tasty\\.UDC|ABTasty API|api\\.abtasty\\.com|api-data-connector-eu\\.abtasty\\.com|dcinfos-cache\\.abtasty\\.com)"
+  severity: High
+  description: AB Tasty API Key
+
+WeGlot_API_Key_1:
+  regex: "(?i)WeGlot[._ -]?API[._ -]?Key"
+  severity: High
+  description: WeGlot API Key Reference
+
+WeGlot_API_Key_2:
+  regex: "wg_[A-Fa-f0-9_-]+"
+  severity: Critical
+  description: WeGlot API Key Pattern
+
+Pivotal_Tracker_API_Token:
+  regex: "(?i)(PivotalTracker[._ -]?API[._ -]?Token|pivotal_tracker_api_token|pivotaltracker\\.com)"
+  severity: High
+  description: Pivotal Tracker API Token Reference
+
+LinkedIn_OAuth_Token:
+  regex: "(?i)(LinkedIn OAUTH|LinkedIn_OAUTH|LinkedInOAUTH|LinkedIn-OAUTH|LinkedIn\\.OAUTH|linkedin\\.android\\.liauthlib|linkedin_auth_prefs|linkedin\\.auth_prefs|linkedin_auth\\.prefs|linkedin-auth-prefs|LINKEDIN_ACCESS_TOKEN_KEY|LINKEDIN\\.ACCESS_TOKEN_KEY|LINKEDINACCESSTOKENKEY|LINKEDIN-ACCESS-TOKEN-KEY|LINKEDINACCESS\\.TOKENKEY|LINKEDINACCESS_TOKENKEY|LINKEDIN_ACCESS_TOKEN\\.KEY|LINKEDIN ACCESS TOKEN KEY|LinkedInAuthManager|LinkedIn-Auth-Manager|LinkedIn\\.AuthManager|LinkedIn_AuthManager|LinkedInAuth\\.Manager|LinkedInAuth_Manager|LinkedIn Auth Manager|LiAuthToken|Li-Auth-Token|Li\\.AuthToken|LiAuth\\.Token|Li_AuthToken|LiAuth_Token|Li Auth Token|LiAuth\\.authorize)"
+  severity: High
+  description: LinkedIn OAuth Token
+
+Bazaarvoice_Passkey:
+  regex: "(?i)(X[-._]?Bazaarvoice[-._]?Passkey|Bazaarvoice[._ -]?API|Bazaarvoice[._ -]?Key|api\\.bazaarvoice\\.com|which-cpv-api\\.bazaarvoice\\.com)"
+  severity: High
+  description: Bazaarvoice Passkey or API Reference
+
+Shopify_Access_Token:
+  regex: "shpat_[0-9a-f]+"
+  severity: Critical
+  description: Shopify Access Token
+
+Onfido_API_Live_Token:
+  regex: "api_live\\.[A-Za-z0-9_-]{5}\\.[A-Za-z0-9_-]+"
+  severity: Critical
+  description: Onfido Live API Token
+
+Pixlee_API_Key:
+  regex: "(?i)(?<!\\w)pixlee[_]?api[_]?key(?!\\w)"
+  severity: High
+  description: Pixlee API Key Reference
+
+Giphy_API_Key:
+  regex: "(?i)[\"']?(?:giphy[._ -]?ApiKey|giphy[._ -]?Api|GIPHY_API_KEY)[\"']?\\s*:"
+  severity: High
+  description: Giphy API Key Reference
+
+IPStack_API_Key:
+  regex: "(?i)(api\\.ipstack\\.com|ipstack[._-]?API[._-]?Key|ipstackAPIKey)"
+  severity: High
+  description: IPStack API Key Reference
+
+IPStack_Access_Key:
+  regex: "(?i)(ipstack[._-]?Access[._-]?Key|ipstackAccessKey)"
+  severity: High
+  description: IPStack Access Key Reference
+
+Instatus_API_Key:
+  regex: "(?i)(api[._ -]?instatus[._ -]?key|instatus[._ -]?api[._ -]?key|instatus[._ -]?apikey)"
+  severity: High
+  description: Instatus API Key Reference
+
+LanguageLayer_API_Key:
+  regex: "(?i)(api\\.languagelayer\\.com|languagelayer[._-]?API[._-]?Key|language[._-]?layer[._-]?API[._-]?Key)"
+  severity: High
+  description: LanguageLayer API Key Reference
+
+LanguageLayer_Access_Key:
+  regex: "(?i)(languagelayer[._-]?Access[._-]?Key|language[._-]?layer[._-]?Access[._-]?Key)"
+  severity: High
+  description: LanguageLayer Access Key Reference
+
+MarketStack_API_Key:
+  regex: "(?i)(api\\.marketstack\\.com|marketstack[._-]?API[._-]?Key|market[._-]?stack[._-]?API[._-]?Key)"
+  severity: High
+  description: MarketStack API Key Reference
+
+Marketstack_Access_Key:
+  regex: "(?i)(marketstack[._-]?Access[._-]?Key|market[._-]?stack[._-]?Access[._-]?Key)"
+  severity: High
+  description: MarketStack Access Key Reference
+
+MediaStack_API_Key:
+  regex: "(?i)(api\\.mediastack\\.com|mediastack[._-]?API[._-]?Key|media[._-]?stack[._-]?API[._-]?Key)"
+  severity: High
+  description: MediaStack API Key Reference
+
+Mediastack_Access_Key:
+  regex: "(?i)(mediastack[._-]?Access[._-]?Key|media[._-]?stack[._-]?Access[._-]?Key)"
+  severity: High
+  description: MediaStack Access Key Reference
+
+Iterable_API_Key:
+  regex: "(?i)(api\\.iterable\\.com|Iterable[._ -]?API[._ -]?Key)"
+  severity: High
+  description: Iterable API Key Reference
+
+MindMeister_Access_Token:
+  regex: "(?i)(www\\.mindmeister\\.com/api|mind[ _-]?meister[._-]?access[._-]?token)"
+  severity: High
+  description: MindMeister Access Token Reference
+
+MindMeister_API_Key:
+  regex: "(?i)mind[ _-]?meister[._-]?api[._-]?key"
+  severity: High
+  description: MindMeister API Key Reference
+
+Lokalise_API_Key:
+  regex: "(?i)(api\\.lokalise\\.com|lokalise[._-]?api[._-]?key)"
+  severity: High
+  description: Lokalise API Key Reference
+
+Lokalise_SDK_Token:
+  regex: "(?i)lokalise[._-]?sdk[._-]?token"
+  severity: High
+  description: Lokalise SDK Token Reference
+
+Lokalise_Project_ID:
+  regex: "(?i)lokalise[._-]?project[._-]?id"
+  severity: Medium
+  description: Lokalise Project ID Reference
+
+Jumpcloud_API_Key:
+  regex: "(?i)(JC[_.-]?API[_.-]?KEY|Jump[ _-]?cloud[_.-]?API[_.-]?Key)"
+  severity: High
+  description: JumpCloud API Key Reference
+
+Localytics_APP_Key:
+  regex: "(?i)localytics[._ -]?(?:app[._ -]?)?key"
+  severity: High
+  description: Localytics App Key Reference
+
+Localytics_Account_ID:
+  regex: "(?i)localytics[._-]?account[._-]?id"
+  severity: Medium
+  description: Localytics Account ID Reference
+
+Localytics_API_Key_1:
+  regex: "(?i)(api\\.lytics\\.io|Localytics[._-]?API[._-]?key)"
+  severity: High
+  description: Localytics API Key Reference
+
+Localytics_API_Key_2:
+  regex: "(?i)Lytics[._-]?API[._-]?key"
+  severity: High
+  description: Lytics API Key Reference
+
+Countly_API_Key:
+  regex: "(?i)(try\\.count\\.ly|Countly[._-]?API[._-]?key)"
+  severity: High
+  description: Countly API Key Reference
+
+AppSpot_URL:
+  regex: "(?i)\\b[a-z0-9-]+\\.appspot\\.com(?:/[^\\s\"']*)?"
+  severity: Medium
+  description: Google AppSpot URL
+
+Typesense_API_Key:
+  regex: "(?i)(?:\\.typesense\\.net|X-TYPESENSE-API-KEY|Typesense[._ -]?API[._ -]?Key)"
+  severity: High
+  description: Typesense API Key Reference
+
+NPM_Token:
+  regex: "(?i)(NPM[._ -]?PUBLISH[._ -]?TOKEN|NPM[._]?TOKEN|registry\\.npmjs\\.org)"
+  severity: High
+  description: NPM Token Reference
+
+Keenio_API_Key:
+  regex: "(?i)Keenio[._-]?API[._-]?Key|Keenio[._-]?API[._-]?Key|KeenioAPIKey|Keenio API Key|Keenio[._-]?API[._-]?Key|Keenio[._-]?API[._-]?Key|Keen\\.io[._-]?API[._-]?Key|Keen\\.io[._-]?API[._-]?Key|Keen\\.ioAPIKey|Keen\\.io API Key|Organization[._-]?Key|Organization[._-]?Key|Organization\\.Key|OrganizationKey|Organization[._-]?Key|kafka-out\\.keen\\.io|org\\.apache\\.kafka\\.clients\\.consumer\\.KafkaConsumer|org\\.apache\\.kafka\\.common\\.security\\.plain\\.PlainLoginModule"
+  severity: High
+  description: Keen.io API Key
+
+MapBox_API_Key:
+  regex: "(?i)pk\\.ey\\w*"
+  severity: Critical
+  description: MapBox Public API Key Pattern
+
+Salesforce_API_Key:
+  regex: "(?i)Salesforce[._-]?API[._-]?key|Salesforce Api Key"
+  severity: High
+  description: Salesforce API Key Reference
+
+Salesforce_Access_Token:
+  regex: "(?i)Salesforce[._-]?Access[._-]?token|Salesforce Access Token"
+  severity: High
+  description: Salesforce Access Token Reference
+
+SauceLabs_Access_Key:
+  regex: "(?i)(Sauce[._-]?Access[._-]?key|saucelabs\\.accessKey)"
+  severity: High
+  description: SauceLabs Access Key Reference
+
+SauceLabs_API_Key_1:
+  regex: "(?i)(saucelabs[._-]?api[._-]?key|saucelabs[._-]?apikey|saucelabs[._-]?com)"
+  severity: High
+  description: SauceLabs API Key or Endpoint Reference
+
+SauceLabs_API_Key_2:
+  regex: "(?i)(sauce[._-]?api[._-]?key|sauce[._-]?apikey|sauce[._-]?com)"
+  severity: High
+  description: Sauce API Key or Endpoint Reference
+
+SauceLabs_Credentials_1:
+  regex: "(?i)(Sauce|saucelabs)[._ -]?(Username|Password)(?![\\w.])"
+  severity: High
+  description: SauceLabs Credentials Reference
+
+SauceLabs_Credentials_2:
+  regex: "(?i)(Sauce|sauce)[._ -]?(Username|Password)(?![\\w.])"
+  severity: High
+  description: Sauce Credentials Reference
+
+Microsoft_Azure_Tenant:
+  regex: "(?i)Microsoft[._-]?Azure[._-]?Tenant|MicrosoftAzure\\.Tenant|Microsoft Azure Tenant"
+  severity: Medium
+  description: Microsoft Azure Tenant Reference
+
+New_Relic_API_Key:
+  regex: "NRAK-[A-Za-z0-9_-]+"
+  severity: Critical
+  description: New Relic API Key
+
+New_Relic_Insights_Query_Key:
+  regex: "NRIQ-[A-Za-z0-9_-]+"
+  severity: Critical
+  description: New Relic Insights Query Key
+
+New_Relic_Insights_Insert_Key:
+  regex: "NRII-[A-Za-z0-9_-]+"
+  severity: Critical
+  description: New Relic Insights Insert Key
+
+New_Relic_Admin_API_Key:
+  regex: "NRAA-[A-Za-z0-9_-]+"
+  severity: Critical
+  description: New Relic Admin API Key
+
+New_Relic_REST_API_Key:
+  regex: "NRRA-[A-Za-z0-9_-]+"
+  severity: Critical
+  description: New Relic REST API Key
+
+New_Relic_APM_License_Key:
+  regex: "(?i)[A-Za-z0-9_-]+NRAL"
+  severity: High
+  description: New Relic APM License Key
+
+New_Relic_Personal_API_Key_NerdGraph:
+  regex: "(?i)(Nerd[._ -]?Graph|api\\.newrelic\\.com)"
+  severity: High
+  description: New Relic NerdGraph or API Reference
+
+Pendo_Integration_Key:
+  regex: "(?i)x[- ._]?pendo[- ._]?integration[- ._]?key|x[- ._]?pendo[- ._]?integrationkey|pendointegration[- ._]?key|pendo[- ._]?integration[- ._]?key|pendo\\.integration[- ._]?key|pendo_integration\\.key|pendo\\.integrationkey|pendo_integration[- ._]?key"
+  severity: High
+  description: Pendo Integration Key
+
+Sendgrid_API_Key:
+  regex: "\\bSG\\.[A-Za-z0-9_-]{20,25}\\.[A-Za-z0-9_-]{35,50}\\b"
+  severity: Critical
+  description: SendGrid API Key
+
+Adafruit_API_Key:
+  regex: "(?i)(Adafruit[._ -]?API[._ -]?Key|X-AIO-Key|io\\.adafruit\\.com)"
+  severity: High
+  description: Adafruit API Key Reference
+
+Adobe_Secret_Key:
+  regex: "(?i)adobe[._ -]?secret[._ -]?key"
+  severity: High
+  description: Adobe Secret Key Reference
+
+Adobe_API_Key:
+  regex: "(?i)adobe[._ -]?api[._ -]?key"
+  severity: High
+  description: Adobe API Key Reference
+
+Zapier_Webhook_URL:
+  regex: "(?i)hooks\\.zapier\\.com/hooks"
+  severity: High
+  description: Zapier Webhook URL
+
+Zendesk_API_Key:
+  regex: "(?i)zendesk[._ -]?api[._ -]?key"
+  severity: High
+  description: Zendesk API Key Reference
+
+Age_Secret_Key:
+  regex: "AGE-SECRET-KEY-1[A-Z0-9]+"
+  severity: Critical
+  description: AGE Encryption Secret Key
+
+yWorks_API_Key:
+  regex: "(?i)(yfiles[._ -]?Api[._ -]?Key|yworks[._ -]?Api[._ -]?Key)"
+  severity: High
+  description: yWorks API Key Reference
+
+Airtable_Personal_Access_Token:
+  regex: "pat[A-Za-z0-9]{14}\\.[A-Fa-f0-9]+"
+  severity: Critical
+  description: Airtable Personal Access Token
+
+Alchemy_API_Key:
+  regex: "(?i)(eth-mainnet\\.g\\.alchemy\\.com|Alchemy[._ -]?API[._ -]?Key)"
+  severity: High
+  description: Alchemy API Key or Endpoint Reference
+
+Apptimize_API_Key:
+  regex: "(?i)(apptimize[._ -]?key|api\\.apptimize\\.com)"
+  severity: High
+  description: Apptimize API Key Reference
+
+Fabric_API_Key:
+  regex: "(?i)(io\\.fabric\\.APIkey|iofabricAPIkey|io fabric APIkey|io\\.fabric\\.API\\.key|io_fabric_API_key|io-fabric-APIkey|io-fabric-API-key|io-fabric-APIkey|iofabric\\.APIkey|io fabric API key|fabric api key|fabricapikey|fabric\\.api\\.key|fabric-api-key|fabric_api_key|fabric_api\\.key|fabric\\.api_key)"
+  severity: High
+  description: Fabric API Key
+

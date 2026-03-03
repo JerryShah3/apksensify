@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>APKSensify</title>
+
+<style>
+body{
+margin:0;
+padding:40px;
+font-family:Verdana,sans-serif;
+background:url("/static/background.png") no-repeat center center fixed;
+background-size:cover;
+color:#fff;
+}
+
+body::before{
+content:"";
+position:fixed;
+top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.75);
+z-index:-1;
+}
+
+.container{
+background:rgba(0,0,0,0.65);
+backdrop-filter:blur(12px);
+padding:30px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.6);
+max-width:1200px;
+margin:auto;
+}
+
+h1{
+margin-bottom:5px;
+font-size:45px;
+text-align:center;
+background:linear-gradient(90deg,#00f5ff,#00ff99);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 20px rgba(0,255,255,0.4);
+}
+
+h6{
+text-align:center;
+color:#ccc;
+margin-bottom:20px;
+}
+
+#drop-area{
+border:2px dashed #00d4ff;
+padding:30px;
+text-align:center;
+background:rgba(255,255,255,0.05);
+margin-bottom:20px;
+cursor:pointer;
+border-radius:15px;
+transition:0.3s;
+}
+
+#drop-area:hover{
+background:rgba(0,212,255,0.08);
+box-shadow:0 0 15px rgba(0,212,255,0.4);
+}
+
+button{
+padding:6px 12px;
+background:#00d4ff;
+color:#000;
+border:none;
+cursor:pointer;
+border-radius:8px;
+font-weight:bold;
+margin-top:5px;
+transition:0.3s;
+}
+
+button:hover{
+background:#00aacc;
+box-shadow:0 0 8px #00d4ff;
+}
+
+/* Progress */
+.progress{
+width:100%;
+background:rgba(255,255,255,0.1);
+height:30px;
+margin-top:15px;
+display:none;
+border-radius:15px;
+overflow:hidden;
+}
+
+.progress-bar{
+height:100%;
+width:0%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+color:#000;
+background:linear-gradient(90deg,#00d4ff,#00ff99);
+transition:width 0.3s ease;
+}
+
+/* Table */
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:25px;
+background:rgba(255,255,255,0.05);
+border-radius:15px;
+overflow:hidden;
+}
+
+th,td{
+padding:14px;
+border-bottom:1px solid rgba(255,255,255,0.1);
+text-align:left;
+}
+
+th{
+background:rgba(0,212,255,0.1);
+color:#00d4ff;
+}
+
+tr:hover{
+background:rgba(0,212,255,0.08);
+}
+
+/* Badges */
+.badge{
+padding:5px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+color:#000;
+}
+
+.done{background:#00ff99;}
+.critical{background:#ff4d4d;color:#fff;}
+.high{background:#ff8800;}
+.medium{background:#ffaa00;}
+.low{background:#cccc00;}
+
+/* Modal */
+.modal{
+display:none;
+position:fixed;
+top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+}
+
+.modal-content{
+background:rgba(0,0,0,0.95);
+padding:25px;
+width:70%;
+max-height:80%;
+overflow:auto;
+border-radius:20px;
+box-shadow:0 0 30px rgba(0,212,255,0.6);
+}
+
+/* Exploit */
+.exploit-box{
+max-height:0;
+overflow:hidden;
+transition:max-height 0.4s ease;
+background:rgba(255,0,0,0.08);
+border-left:3px solid #ff4444;
+border-radius:8px;
+margin-top:10px;
+padding:0 10px;
+}
+
+.exploit-box.open{
+padding:10px;
+max-height:500px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>APKSensify</h1>
+<h6>Soft Launch: Beta v1.0</h6>
+
+<div id="drop-area">
+<b>Drag & Drop APK Here</b><br><br>
+<input type="file" id="fileElem" hidden>
+<button onclick="document.getElementById('fileElem').click()">Click to Upload</button>
+</div>
+
+<div class="progress" id="progress">
+<div class="progress-bar" id="progressBar">0%</div>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Date</th>
+<th>Status</th>
+<th>Risk</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="scanTable"></tbody>
+</table>
+
+</div>
+
+<!-- Modal -->
+<div class="modal" id="detailModal">
+<div class="modal-content">
+<button onclick="closeModal()">Close</button>
+<div id="detailContent"></div>
+</div>
+</div>
+
+<script>
+
+const dropArea=document.getElementById("drop-area");
+const progress=document.getElementById("progress");
+const progressBar=document.getElementById("progressBar");
+
+dropArea.addEventListener("dragover",e=>e.preventDefault());
+dropArea.addEventListener("drop",e=>{
+e.preventDefault();
+uploadFile(e.dataTransfer.files[0]);
+});
+
+document.getElementById("fileElem").addEventListener("change",function(){
+uploadFile(this.files[0]);
+});
+
+/* Upload with real progress */
+function uploadFile(file){
+
+const formData=new FormData();
+formData.append("apk",file);
+
+progress.style.display="block";
+progressBar.style.width="0%";
+progressBar.innerText="0%";
+
+const xhr=new XMLHttpRequest();
+xhr.open("POST","/scan",true);
+
+xhr.upload.onprogress=function(e){
+if(e.lengthComputable){
+let percent=Math.round((e.loaded/e.total)*100);
+if(percent<99){
+progressBar.style.width=percent+"%";
+progressBar.innerText=percent+"%";
+}
+}
+};
+
+xhr.onload=function(){
+if(xhr.status===200){
+progressBar.style.width="100%";
+progressBar.innerText="100%";
+setTimeout(()=>{
+progress.style.display="none";
+loadScans();
+},500);
+}else{
+alert("Scan failed.");
+progress.style.display="none";
+}
+};
+
+xhr.send(formData);
+}
+
+function loadScans(){
+fetch("/history")
+.then(res=>res.json())
+.then(data=>{
+const table=document.getElementById("scanTable");
+table.innerHTML="";
+data.forEach(scan=>{
+table.innerHTML+=`
+<tr>
+<td style="cursor:pointer;color:#00d4ff;" onclick="viewScan('${scan.id}')">
+${scan.filename}
+</td>
+<td>${scan.date}</td>
+<td><span class="badge done">${scan.status}</span></td>
+<td><span class="badge ${scan.risk.toLowerCase()}">${scan.risk}</span></td>
+<td><button onclick="deleteScan('${scan.id}')">Delete</button></td>
+</tr>`;
+});
+});
+}
+
+function viewScan(id){
+fetch(`/scan/${id}`)
+.then(res=>res.json())
+.then(data=>{
+
+let html=`<h2 style="color:#00d4ff;">${data.filename}</h2><hr>`;
+
+if(data.findings.length===0){
+html+="<p>No secrets found.</p>";
+}
+
+data.findings.forEach(f=>{
+html+=`
+<div style="margin-bottom:20px;">
+<b style="color:#00ff99;">
+${f.rule} (${f.severity})
+</b>
+<button onclick="toggleExploit('${f.rule}')">Exploit</button>
+<br>
+<small style="color:#aaa;">File: ${f.file}</small>
+<ul>
+${f.matches.map(m=>`<li>${m}</li>`).join("")}
+</ul>
+<div id="exploit-${f.rule}" class="exploit-box"></div>
+</div>
+<hr>`;
+});
+
+document.getElementById("detailContent").innerHTML=html;
+document.getElementById("detailModal").style.display="flex";
+});
+}
+
+function toggleExploit(rule){
+
+const box=document.getElementById(`exploit-${rule}`);
+
+if(box.classList.contains("open")){
+box.classList.remove("open");
+box.innerHTML="";
+return;
+}
+
+fetch(`/exploit/${rule}`)
+.then(res=>res.json())
+.then(data=>{
+
+if(data.error){
+box.innerHTML="<p>No exploit steps found.</p>";
+box.classList.add("open");
+return;
+}
+
+let html="<b>Exploit Steps:</b><ul>";
+data.steps.forEach(step=>{
+html+=`<li>${step}</li>`;
+});
+html+="</ul>";
+
+box.innerHTML=html;
+box.classList.add("open");
+});
+}
+
+function closeModal(){
+document.getElementById("detailModal").style.display="none";
+}
+
+function deleteScan(id){
+fetch(`/delete/${id}`,{method:"POST"})
+.then(()=>loadScans());
+}
+
+loadScans();
+
+</script>
+</body>
+</html>

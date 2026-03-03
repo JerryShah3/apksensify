@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+venv/
+.env/
+.env
+
+# Cache
+.cache/
+
+# Decompilation output
+*_decompiled/
+sample_decompiled/
+
+# Web app runtime files
+uploads/
+scans.json
+
+# Reports
+report.html
+report.sarif
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log

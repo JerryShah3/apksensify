@@ -1,0 +1,13 @@
+pyfiglet
+termcolor
+PyYAML
+Flask
+rich
+regex
+rule-engine
+jinja2
+flask
+google-play-scraper
+requests
+beautifulsoup4
+threading
