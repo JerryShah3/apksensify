@@ -11,12 +11,18 @@ RUN apt-get update && \
         unzip \
     && rm -rf /var/lib/apt/lists/*
 
+# Set working directory for project files
 WORKDIR /app
 
-# Copy project
+# Copy project files
 COPY . .
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-ENTRYPOINT ["python", "apksensify.py"]
+# Set runtime working directory to /data
+# This is where user will mount APKs
+WORKDIR /data
+
+# Run apksensify from /app
+ENTRYPOINT ["python", "/app/apksensify.py"]
