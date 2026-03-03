@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" width="400">
+  <img src="assets/apksensify_logo.png" width="400">
 </p>
 
 
