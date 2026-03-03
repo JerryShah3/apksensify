@@ -206,7 +206,7 @@ docker build -t apksensify .
 - Run scan:
 
 ```
-docker run --rm -v $(pwd):/app apksensify sample.apk
+docker run --rm -v $(pwd):/data apksensify <Your_APK>.apk
 ```
 
 ```
