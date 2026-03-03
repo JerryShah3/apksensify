@@ -160,7 +160,6 @@ python3 apksensify.py --exploit Google_API
 | 0    | Scan completed, no critical findings |
 | 2    | Critical finding detected            |
 | 1    | Error occurred                       |
-| ---- | ------------------------------------ |
 
 - Useful for CI/CD pipelines.
 
@@ -205,6 +204,7 @@ docker build -t apksensify .
 docker run --rm -v $(pwd):/app apksensify sample.apk
 ```
 
+```
 apksensify/
 │
 ├── apksensify.py
@@ -225,6 +225,7 @@ apksensify/
 ├── uploads/
 ├── .cache/
 └── scans.json
+```
 
 🧠 Writing Custom Rules
 
