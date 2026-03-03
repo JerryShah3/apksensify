@@ -79,85 +79,78 @@ python3 apksensify.py sample.apk
 ```
 Runs a static scan on the APK and prints findings in formatted CLI output.
 
-🔎 --json
+🔎 --json (Outputs results in raw JSON format.)
 
 ```
 python3 apksensify.py sample.apk --json
 ```
-Outputs results in raw JSON format.
 
-Useful for:
+⭐ Useful for:
 
-Automation
+- Automation
 
-CI/CD pipelines
+- CI/CD pipelines
 
-Script integration
+- Script integration
 
-📄 --html
+📄 --html (Generates an HTML report.)
 
 ```
 python3 apksensify.py sample.apk --html
 ```
 
-Generates an HTML report:
+⭐ Useful for:
 
-report.html
+- Sharing results
 
-Useful for:
+- Client reports
 
-Sharing results
+- Documentation
 
-Client reports
-
-Documentation
-
-🛡 --sarif
+🛡 --sarif (Generates SARIF output.)
 
 ```
 python3 apksensify.py sample.apk --sarif
-
-Generates SARIF output:
-
-report.sarif
-
-Useful for:
-
-GitHub Code Scanning
-
-DevSecOps workflows
-
-CI integration
 ```
 
-⚡ --no-cache
+⭐ Useful for:
+
+- GitHub Code Scanning
+
+- DevSecOps workflows
+
+- CI integration
+
+
+⚡ --no-cache (Forces a fresh scan and ignores cached results.)
+
+```
 python3 apksensify.py sample.apk --no-cache
+```
 
-Forces a fresh scan and ignores cached results.
+🚀 Default behavior:
 
-Default behavior:
+- APKSensify hashes the APK
 
-APKSensify hashes the APK
+- If results exist in .cache/, they are reused
 
-If results exist in .cache/, they are reused
+- Use this flag when:
 
-Use this flag when:
+- Rules are updated
 
-Rules are updated
+- You want guaranteed fresh analysis
 
-You want guaranteed fresh analysis
+🧨 --exploit <rule_name> (Displays exploit steps for a specific rule.)
 
-🧨 --exploit <rule_name>
+```
 python3 apksensify.py --exploit Google_API
+```
 
-Displays exploit steps for a specific rule.
+- Exploit steps are defined inside:
 
-Exploit steps are defined inside:
+- rules/exploit.yaml
 
-rules/exploit.yaml
-
-This mode does NOT scan an APK.
-It only shows exploitation guidance.
+- This mode does NOT scan an APK. It only shows exploitation guidance.
 
 
 🧾 Exit Codes
@@ -167,39 +160,50 @@ It only shows exploitation guidance.
 | 0    | Scan completed, no critical findings |
 | 2    | Critical finding detected            |
 | 1    | Error occurred                       |
-Useful for CI/CD pipelines.
+| ---- | ------------------------------------ |
+
+- Useful for CI/CD pipelines.
 
 🌐 Web UI
 
-Start server:
+- Start server:
+```
 python3 web_app.py
+```
 
-Open:
+- Open:
 
+```
 http://127.0.0.1:8000
-Web Features
+```
 
-Drag & drop APK upload
+🎯 Web Features
 
-Live scan status
+- Drag & drop APK upload
 
-Findings modal view
+- Live scan status
 
-Collapsible exploit panel
+- Findings modal view
 
-Scan history
+- Collapsible exploit panel
 
-Delete scan option
+- Scan history
+
+- Delete scan option
 
 🐳 Docker Usage
 
-Build image:
+- Build image:
 
+```
 docker build -t apksensify .
+```
 
-Run scan:
+- Run scan:
 
+```
 docker run --rm -v $(pwd):/app apksensify sample.apk
+```
 
 apksensify/
 │
@@ -224,8 +228,9 @@ apksensify/
 
 🧠 Writing Custom Rules
 
-Rules are defined in:
+- Rules are defined in:
 
+```
 rules/*.yaml
 
 Example:
@@ -234,65 +239,68 @@ Google_API:
   regex: "AIza[0-9A-Za-z-_]{35}"
   severity: "low"
   description: "Google API Key detected"
+```
 
-Fields:
+✔ Fields:
 
-regex → detection pattern
+- regex → detection pattern
 
-severity → critical / high / medium / low
+- severity → critical / high / medium / low
 
-NOTE: Severity is tend to change based on the exploitation scenario
+- NOTE: Severity is tend to change based on the exploitation scenario
 
-description → optional
+- description → optional
 
 🔮 Roadmap
 
-Planned features:
+✔ Planned features:
 
-Root detection logic
+- Root detection logic
 
-SSL pinning detection
+- SSL pinning detection
 
-Insecure deep link detection
+- Insecure deep link detection
 
-Performance optimization
+- Performance optimization
 
 🤝 Contributing
 
-Fork the repository
+- Fork the repository
 
-Create a feature branch
+- Create a feature branch
 
-Commit changes
+- Commit changes
 
-Open a pull request
+- Open a pull request
 
 🛡 Security Disclaimer
 
 This tool is intended for:
 
-Security research
+- Security research
 
-Educational purposes
+- Educational purposes
 
-Authorized penetration testing
+- Authorized penetration testing
 
-Do not scan applications without permission.
+- Do not scan applications without permission.
 
 📜 License
 
-MIT License
+- MIT License
 
 👤 Author
 
+```
 Jerry Shah
 Security Researcher
 
 GitHub: https://github.com/JerryShah3
+```
 
 ⭐ Support
 
-If you find this project useful:
+- If you find this project useful:
 
 ⭐ Star the repository
 
