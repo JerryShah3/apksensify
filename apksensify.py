@@ -85,7 +85,7 @@ def generate_sarif(findings):
             "tool": {
                 "driver": {
                     "name": "APKSensify",
-                    "informationUri": "https://github.com/yourrepo"
+                    "informationUri": "https://github.com/JerryShah3"
                 }
             },
             "results": []
@@ -185,7 +185,7 @@ def run_scan(apk_path, json_output=False, html=False, sarif=False, no_cache=Fals
 
     findings = None
 
-    # 🔥 NEW LOGIC
+
     if not no_cache:
         findings = load_from_cache(apk_hash)
 
