@@ -207,6 +207,14 @@ docker build -t apksensify .
 
 ```
 docker run --rm -v $(pwd):/data apksensify <Your_APK>.apk
+
+OR
+
+docker run --rm -v $(pwd):/data apksensify /data/dvba.apk
+
+OR
+
+docker run --rm -v <Path_to_APK>:/data apksensify /data/<Your_APK>.apk
 ```
 
 ```
